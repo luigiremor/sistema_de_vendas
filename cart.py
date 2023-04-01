@@ -1,12 +1,31 @@
+from product import Product
+
+
 class Cart:
     def __init__(self):
-        self.items = []
+        self.products: dict[str, Product] = {}
 
-    def add_item(self, item):
-        self.items.append(item)
+    def add_product(self, product, qtd=1):
+        if product.name in self.products.keys():
+            self.products[product.name].qtd += qtd
+        else:
+            product = Product(product.name, product.price, qtd) 
+            self.products[product.name] = product
 
-    def remove_item(self, item):
-        self.items.remove(item)
+    def remove_product(self, product, qtd=1):
+        if product.name in self.products.keys():
+            self.products[product.name].qtd -= qtd
+            if self.products[product.name].qtd <= 0:
+                del self.products[product.name]
 
     def total(self):
-        return sum(item.price for item in self.items)
+        total = 0
+        for product in self.products.values():
+            total += product.price * product.qtd
+        return total
+    
+    def list_products(self):
+        return self.products.values()
+    
+    def __str__(self) -> str:
+        return f"Produtos: {self.list_products()} - Total: {self.total()}"    

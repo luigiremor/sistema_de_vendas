@@ -26,7 +26,7 @@ class System:
             return False
         return self.user.authenticate(username, password)
     
-    def signout(self):
+    def logout(self):
         self.user = None
 
     def consult_storage_product(self, name):
@@ -42,13 +42,16 @@ class System:
 
     def add_product_to_cart(self, product, qtd=1):
         self.storage.remove_product(product, qtd)
-        self.cart.add_item(product)
+        self.cart.add_product(product, qtd)
 
     def remove_product_from_cart(self, product):
-        self.cart.remove_item(product)
+        self.cart.remove_product(product)
         self.storage.add_product(product)
 
     def total_cart(self):
         return self.cart.total()
+    
+    def list_cart(self):
+        return self.cart.list_products()
     
 

@@ -78,7 +78,8 @@ if __name__ == '__main__':
             print('4 - Adicionar produto ao carrinho')
             print('5 - Remover produto do carrinho')
             print('6 - Total do carrinho')
-            print('7 - Sair')
+            print('7 - Listar carinho')
+            print('8 - Sair')
             print(30 * '-=')
 
             option = int(input('Opção: '))
@@ -137,7 +138,17 @@ if __name__ == '__main__':
                     print('Produto não encontrado!')
             elif option == 6: # Total do carrinho
                 print(f'Total: {system.total_cart()}')
-            elif option == 7: # Sair
+
+            elif option == 7: # Listar carrinho
+                products = system.list_cart()
+                print(30 * '-=')
+                print('Produtos no carrinho:')
+                for product in products:
+                    print(product)
+                print(30 * '-=')
+
+            elif option == 8: # Sair
+                system.logout()
                 is_logged = False
 
             
