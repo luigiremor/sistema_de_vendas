@@ -11,6 +11,7 @@ class System:
         self.storage: Storage = None
         self.cart: Cart = None
         self.user: Manager or Cashier = None
+        self.disconnecteds: list[Manager or Cashier] = []
 
     def add_cart(self, cart):
         self.cart = cart
@@ -23,10 +24,17 @@ class System:
 
     def login(self, username, password):
         if self.user is None:
+            for user in self.disconnecteds:
+                if user.authenticate(username, password):
+                    self.user = user
+                    self.disconnecteds.remove(user)
+                    return True
             return False
-        return self.user.authenticate(username, password)
+        else:
+            return self.user.authenticate(username, password)
     
     def logout(self):
+        self.disconnecteds.append(self.user)
         self.user = None
 
     def consult_storage_product(self, name):
