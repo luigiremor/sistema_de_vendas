@@ -62,4 +62,7 @@ class System:
     def list_cart(self):
         return self.cart.list_products()
     
+    def list_storage(self):
+        return self.storage.list_products()
+    
 

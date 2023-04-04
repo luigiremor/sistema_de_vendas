@@ -72,14 +72,15 @@ if __name__ == '__main__':
 
         while is_logged:
             print(30 * '-=')
-            print('1 - Consultar produto')
-            print('2 - Adicionar produto')
-            print('3 - Remover produto')
-            print('4 - Adicionar produto ao carrinho')
-            print('5 - Remover produto do carrinho')
-            print('6 - Total do carrinho')
-            print('7 - Listar carinho')
-            print('8 - Sair')
+            print('1 - Consultar produto do estoque')
+            print('2 - Adicionar produto do estoque')
+            print('3 - Remover produto do estoque')
+            print('4 - Listar produtos do estoque')
+            print('5 - Adicionar produto ao carrinho')
+            print('6 - Remover produto do carrinho')
+            print('7 - Total do carrinho')
+            print('8 - Listar carinho')
+            print('9 - Sair')
             print(30 * '-=')
 
             option = int(input('Opção: '))
@@ -121,25 +122,33 @@ if __name__ == '__main__':
                 else:
                     print('Produto não encontrado!')
                     continue
-                
-            elif option == 4: # Adicionar produto ao carrinho
+                    
+            elif option == 4: # Listar produtos do estoque
+                products = system.list_storage()
+                print(30 * '-=')
+                print('Produtos no estoque:')
+                for product in products:
+                    print(product)
+                print(30 * '-=')
+
+            elif option == 5: # Adicionar produto ao carrinho
                 name = input('Nome do produto: ')
                 product = system.consult_storage_product(name)
                 if product:
                     system.add_product_to_cart(product)
                 else:
                     print('Produto não encontrado!')
-            elif option == 5: # Remover produto do carrinho
+            elif option == 6: # Remover produto do carrinho
                 name = input('Nome do produto: ')
                 product = system.consult_storage_product(name)
                 if product:
                     system.remove_product_from_cart(product)
                 else:
                     print('Produto não encontrado!')
-            elif option == 6: # Total do carrinho
+            elif option == 7: # Total do carrinho
                 print(f'Total: {system.total_cart()}')
 
-            elif option == 7: # Listar carrinho
+            elif option == 8: # Listar carrinho
                 products = system.list_cart()
                 print(30 * '-=')
                 print('Produtos no carrinho:')
@@ -147,7 +156,7 @@ if __name__ == '__main__':
                     print(product)
                 print(30 * '-=')
 
-            elif option == 8: # Sair
+            elif option == 9: # Sair
                 system.logout()
                 is_logged = False
 
