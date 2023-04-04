@@ -65,10 +65,10 @@ class System:
     def total_cart(self):
         return self.cart.total()
     
-    def list_cart(self):
-        return self.cart.list_products()
+    def get_cart(self):
+        return self.cart.get_products()
     
-    def list_storage(self):
-        return self.storage.list_products()
+    def get_storage(self):
+        return self.storage.get_products()
     
 

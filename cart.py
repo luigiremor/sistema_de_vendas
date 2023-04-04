@@ -30,8 +30,8 @@ class Cart:
             total += product.price * product.qtd
         return total
     
-    def list_products(self):
+    def get_products(self):
         return self.products.values()
     
     def __str__(self) -> str:
-        return f"Produtos: {self.list_products()} - Total: {self.total()}"    
+        return f"Produtos: {self.get_products()} - Total: {self.total()}"    

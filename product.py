@@ -5,6 +5,18 @@ class Product:
         self.price = price
         self.qtd = qtd
 
+    def get_name(self):
+        return self.name
+    
+    def get_price(self):
+        return self.price
+    
+    def get_qtd(self):
+        return self.qtd
+    
+    def set_name(self, name):
+        self.name = name
+
     def set_price(self, price):
         self.price = price
     

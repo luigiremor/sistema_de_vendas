@@ -23,8 +23,8 @@ class Storage:
         else:
             return None
         
-    def list_products(self):
+    def get_products(self):
         return self.products.values()
     
     def __str__(self) -> str:
-        return f"Produtos: {self.list_products()}"
+        return f"Produtos: {self.get_products()}"

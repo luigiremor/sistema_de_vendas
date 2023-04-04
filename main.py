@@ -124,7 +124,7 @@ if __name__ == '__main__':
                     continue
                     
             elif option == 4: # Listar produtos do estoque
-                products = system.list_storage()
+                products = system.get_storage()
                 print(30 * '-=')
                 print('Produtos no estoque:')
                 for product in products:
@@ -149,7 +149,7 @@ if __name__ == '__main__':
                 print(f'Total: {system.total_cart()}')
 
             elif option == 8: # Listar carrinho
-                products = system.list_cart()
+                products = system.get_cart()
                 print(30 * '-=')
                 print('Produtos no carrinho:')
                 for product in products:
@@ -159,5 +159,3 @@ if __name__ == '__main__':
             elif option == 9: # Sair
                 system.logout()
                 is_logged = False
-
-            
