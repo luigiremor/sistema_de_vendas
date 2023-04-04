@@ -18,6 +18,12 @@ class Cart:
             if self.products[product.name].qtd <= 0:
                 del self.products[product.name]
 
+    def search_product(self, name):
+        if name in self.products.keys():
+            return self.products[name]
+        else:
+            return None
+
     def total(self):
         total = 0
         for product in self.products.values():

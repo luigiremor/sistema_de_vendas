@@ -49,10 +49,16 @@ class System:
             self.storage.remove_product(product, qtd)
 
     def add_product_to_cart(self, product, qtd=1):
+        if self.storage.search_product(product.name) is None:
+            return False
+        
         self.storage.remove_product(product, qtd)
         self.cart.add_product(product, qtd)
 
     def remove_product_from_cart(self, product):
+        if self.cart.search_product(product.name) is None:
+            return False
+        
         self.cart.remove_product(product)
         self.storage.add_product(product)
 
